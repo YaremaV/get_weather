@@ -1,4 +1,4 @@
-const BASE_URL = "http://api.openweathermap.org/data/2.5/weather?";
+const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
 const KEY = "2d20223674e609e0aa7b3ad29d181f8b";
 
 async function fetchWithErrorHandling(url = "") {
