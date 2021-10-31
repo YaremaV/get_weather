@@ -5,9 +5,10 @@ import Container from "./component/Container/Container";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import Loader from "react-loader-spinner";
+import Information from "./views/Information/Information";
 
 const SearchCountry = lazy(() => import("./views/Home/Home"));
-const Information = lazy(() => import("./views/Information/Information"));
+// const Information = lazy(() => import("./views/Information/Information"));
 
 export default function App() {
   return (

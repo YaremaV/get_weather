@@ -30,7 +30,7 @@ export default function Information() {
 
               <img
                 alt={"Weather Condition and City"}
-                src={`http://openweathermap.org/img/wn/${weather?.weather?.map(
+                src={`HTTPS://openweathermap.org/img/wn/${weather?.weather?.map(
                   (value) => value.icon
                 )}@2x.png`}
               />

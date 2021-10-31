@@ -34,14 +34,14 @@ export default function SearchCountry() {
   //   }));
   // };
 
-  const onUpdate = () => {
-    moviesApi
-      .fetchSearch(countries)
-      .then((res) => setSearchCountries(res))
-      .catch((error) => {
-        setError(error);
-      });
-  };
+  // const onUpdate = () => {
+  //   moviesApi
+  //     .fetchSearch(countries)
+  //     .then((res) => setSearchCountries(res))
+  //     .catch((error) => {
+  //       setError(error);
+  //     });
+  // };
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
@@ -57,7 +57,7 @@ export default function SearchCountry() {
           pressure={searchCountries.main?.pressure}
           wind={searchCountries.wind?.speed}
           visibility={searchCountries?.visibility}
-          onClick={onUpdate}
+          // onClick={onUpdate}
         />
       )}
     </>
