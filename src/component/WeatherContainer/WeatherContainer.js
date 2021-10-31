@@ -15,31 +15,26 @@ export default function WeatherContainer({
   return (
     <main className="container">
       <ul className="row">
-        <Link to={`/Information/${id}`}>
-          <li key={id} className="container-medium main">
+        <li key={id} className="container-medium main">
+          <Link to={`/Information/${id}`}>
             <img
               alt={"Weather Condition and City"}
               src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
             />
-            <div>
-              <h1>{Math.round(temp - 273.15)} &#176;C</h1>
-              <h2>{city} </h2>
-              <p>{desc}</p>
-              <div className="d-grid gap-2 d-md-block">
-                <button className="btn btn-primary" type="button">
-                  Add
-                </button>
-                <button
-                  onClick={onClick}
-                  className="btn btn-primary"
-                  type="button"
-                >
-                  Update
-                </button>
-              </div>
-            </div>
-          </li>
-        </Link>
+
+            <h1>{Math.round(temp - 273.15)} &#176;C</h1>
+            <h2>{city} </h2>
+            <p>{desc}</p>
+          </Link>
+          <div className="d-grid gap-2 d-md-block">
+            {/* <button className="btn btn-primary" type="button">
+              Add
+            </button> */}
+            <button onClick={onClick} className="btn btn-primary" type="button">
+              Add
+            </button>
+          </div>
+        </li>
       </ul>
     </main>
 

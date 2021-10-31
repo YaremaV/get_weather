@@ -2,13 +2,16 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useRouteMatch, useHistory, useLocation } from "react-router";
 import * as moviesApi from "../../API/weather-api";
+import { v4 as uuidv4 } from "uuid";
 import SearchBar from "../../component/Searchbar/Searchbar";
 import WeatherContainer from "../../component/WeatherContainer/WeatherContainer";
+import WeatherList from "../../component/WeatherList/WeatherList";
 
 export default function SearchCountry() {
   const { url } = useRouteMatch();
   const [countries, setCountries] = useState("");
   const [searchCountries, setSearchCountries] = useState([]);
+  const [list, setList] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -27,12 +30,20 @@ export default function SearchCountry() {
   const handleSubmit = (value) => {
     setCountries(value);
   };
-  const removeCard = () => {};
-  // deleteTodo = todoId => {
-  //   this.setState(prevState => ({
-  //     todos: prevState.todos.filter(todo => todo.id !== todoId),
-  //   }));
+
+  // const removeCard = (contactId) => {
+  //   setList((list) => list.filter((value) => value.id !== contactId));
   // };
+
+  const addCard = (newCard) => {
+    console.log("click");
+    const normValue = newCard.name?.toLowerCase();
+    // newCard.id = uuidv4();
+    setList({ newCard, ...searchCountries });
+    // searchCountries.some(({ name }) => name?.toLowerCase() === normValue)
+    //   ? alert(`${newCard.name} is already in contacts`)
+    //   : setSearchCountries({ newCard, ...searchCountries });
+  };
 
   // const onUpdate = () => {
   //   moviesApi
@@ -42,6 +53,7 @@ export default function SearchCountry() {
   //       setError(error);
   //     });
   // };
+
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
@@ -57,9 +69,10 @@ export default function SearchCountry() {
           pressure={searchCountries.main?.pressure}
           wind={searchCountries.wind?.speed}
           visibility={searchCountries?.visibility}
-          // onClick={onUpdate}
+          onClick={addCard}
         />
       )}
+      {list && <WeatherList weather={list} />}
     </>
   );
 }

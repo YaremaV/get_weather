@@ -9,12 +9,15 @@ import {
 import { NavLink } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import * as moviesApi from "../../API/weather-api";
+import FiveDays from "../../component/FiveDays/FiveDays";
+import Loader from "react-loader-spinner";
 
 export default function Information() {
   const [weather, setWeather] = useState([]);
   const { url } = useRouteMatch();
   const { infoId } = useParams();
   const data = new Date();
+  const location = useLocation();
 
   useEffect(() => {
     moviesApi.fetchDetails(infoId).then(setWeather);
@@ -67,19 +70,17 @@ export default function Information() {
         </div>
       )}
 
-      {/* <div className={s.flex}>
+      <div>
         <NavLink
           to={{
-            pathname: `${url}/cast`,
+            pathname: `${url}/FiveDays`,
             state: { from: location },
           }}
         >
-          <button type="button" className={s.button}>
-            Casts
-          </button>
+          <button type="button">Five Days</button>
         </NavLink>
         <br />
-        <NavLink
+        {/* <NavLink
           to={{
             pathname: `${url}/reviews`,
             state: { from: location },
@@ -88,7 +89,7 @@ export default function Information() {
           <button type="button" className={s.button}>
             Reviews
           </button>
-        </NavLink>
+        </NavLink> */}
       </div>
       <Suspense
         fallback={
@@ -101,13 +102,13 @@ export default function Information() {
           />
         }
       >
-        <Route path={`${url}/cast`}>
-          {movies && <Casts movieId={movieId} />}
+        <Route path={`${url}/FiveDays`}>
+          {weather && <FiveDays infoId={infoId} />}
         </Route>
-        <Route path={`${url}/reviews`}>
+        {/* <Route path={`${url}/reviews`}>
           {movies && <Reviews movieId={movieId} />}
-        </Route>
-      </Suspense> */}
+        </Route> */}
+      </Suspense>
     </main>
   );
 }

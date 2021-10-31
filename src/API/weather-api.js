@@ -1,4 +1,4 @@
-const BASE_URL = "HTTPS://api.openweathermap.org/data/2.5/weather?";
+const BASE_URL = "HTTPS://api.openweathermap.org/data/2.5/";
 const KEY = "2d20223674e609e0aa7b3ad29d181f8b";
 
 async function fetchWithErrorHandling(url = "") {
@@ -9,9 +9,20 @@ async function fetchWithErrorHandling(url = "") {
 }
 
 export function fetchSearch(cityName) {
-  return fetchWithErrorHandling(`${BASE_URL}q=${cityName}&appid=${KEY}`);
+  return fetchWithErrorHandling(
+    `${BASE_URL}weather?q=${cityName}&appid=${KEY}`
+  );
 }
 
 export function fetchDetails(id) {
-  return fetchWithErrorHandling(`${BASE_URL}id=${id}&appid=${KEY}`);
+  return fetchWithErrorHandling(`${BASE_URL}weather?id=${id}&appid=${KEY}`);
 }
+
+export function fetchFiveDays(id) {
+  return fetchWithErrorHandling(
+    `${BASE_URL}forecast/daily?id=${id}&appid=${KEY}`
+  );
+  // api.openweathermap.org/data/2.5/forecast/daily?id=524901&appid={API key}
+}
+
+// api.openweathermap.org/data/2.5/forecast?id={city ID}&appid={API key}
