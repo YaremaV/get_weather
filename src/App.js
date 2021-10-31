@@ -5,6 +5,7 @@ import Container from "./component/Container/Container";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import Loader from "react-loader-spinner";
+import { HashRouter } from "react-router-dom";
 
 const SearchCountry = lazy(() => import("./views/Home/Home"));
 const Information = lazy(() => import("./views/Information/Information"));
@@ -12,7 +13,7 @@ const Information = lazy(() => import("./views/Information/Information"));
 export default function App() {
   return (
     <Container>
-      <BrowserRouter>
+      <HashRouter>
         <AppBar />
 
         <Suspense
@@ -50,7 +51,7 @@ export default function App() {
           draggable
           pauseOnHover
         />
-      </BrowserRouter>
+      </HashRouter>
     </Container>
   );
 }
