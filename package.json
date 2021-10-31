@@ -1,6 +1,6 @@
 {
   "name": "get_weather",
-  "homepage": "https://YaremaV.github.io/get_weather",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
