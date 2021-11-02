@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import SearchBar from "../../component/Searchbar/Searchbar";
 import WeatherContainer from "../../component/WeatherContainer/WeatherContainer";
 import WeatherList from "../../component/WeatherList/WeatherList";
+import Geolocation from "../../component/Geolocation/Geolocation";
 
 export default function SearchCountry() {
   const { url } = useRouteMatch();
@@ -72,7 +73,8 @@ export default function SearchCountry() {
           onClick={addCard}
         />
       )}
-      {list && <WeatherList weather={list} />}
+      <Geolocation />
+      {/* {list && <WeatherList weather={list} />} */}
     </>
   );
 }

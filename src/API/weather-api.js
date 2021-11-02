@@ -22,7 +22,4 @@ export function fetchFiveDays(id) {
   return fetchWithErrorHandling(
     `${BASE_URL}forecast/daily?id=${id}&appid=${KEY}`
   );
-  // api.openweathermap.org/data/2.5/forecast/daily?id=524901&appid={API key}
 }
-
-// api.openweathermap.org/data/2.5/forecast?id={city ID}&appid={API key}
