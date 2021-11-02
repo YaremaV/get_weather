@@ -5,6 +5,7 @@ import Container from "./component/Container/Container";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import Loader from "react-loader-spinner";
+import Geolocation from "./component/Geolocation/Geolocation";
 
 const SearchCountry = lazy(() => import("./views/Home/Home"));
 const Information = lazy(() => import("./views/Information/Information"));
@@ -29,11 +30,13 @@ export default function App() {
             <SearchCountry />
           </Route>
 
+          <Route path="/Information" exact>
+            <Geolocation />
+          </Route>
+
           <Route path="/Information/:infoId">
             <Information />
           </Route>
-
-          {/* <Route path="/Information/:infoId"></Route> */}
         </Switch>
       </Suspense>
 

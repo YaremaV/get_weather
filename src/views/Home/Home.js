@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { useRouteMatch, useHistory, useLocation } from "react-router";
 import * as moviesApi from "../../API/weather-api";
 import { v4 as uuidv4 } from "uuid";
+import { connect } from "react-redux";
+import * as action from "../../redux/action";
 import SearchBar from "../../component/Searchbar/Searchbar";
 import WeatherContainer from "../../component/WeatherContainer/WeatherContainer";
 import WeatherList from "../../component/WeatherList/WeatherList";
-import Geolocation from "../../component/Geolocation/Geolocation";
 
 export default function SearchCountry() {
   const { url } = useRouteMatch();
@@ -32,18 +33,18 @@ export default function SearchCountry() {
     setCountries(value);
   };
 
-  // const removeCard = (contactId) => {
-  //   setList((list) => list.filter((value) => value.id !== contactId));
-  // };
+  const removeCard = (contactId) => {
+    setList((list) => list.filter((value) => value.id !== contactId));
+  };
 
   const addCard = (newCard) => {
     console.log("click");
     const normValue = newCard.name?.toLowerCase();
     // newCard.id = uuidv4();
-    setList({ newCard, ...searchCountries });
-    // searchCountries.some(({ name }) => name?.toLowerCase() === normValue)
-    //   ? alert(`${newCard.name} is already in contacts`)
-    //   : setSearchCountries({ newCard, ...searchCountries });
+
+    searchCountries.some(({ name }) => name?.toLowerCase() === normValue)
+      ? alert(`${newCard.name} is already in contacts`)
+      : setSearchCountries({ newCard, ...searchCountries });
   };
 
   // const onUpdate = () => {
@@ -58,23 +59,37 @@ export default function SearchCountry() {
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
-
-      {countries && (
+      {error && <p>Whoops, something went wrong: {error.message}</p>}
+      {typeof searchCountries.main != "undefined" ? (
         <WeatherContainer
-          id={searchCountries.id}
-          temp={searchCountries?.main?.temp}
-          city={searchCountries.name}
-          icon={searchCountries?.weather?.map((value) => value.icon)}
-          desc={searchCountries?.weather?.map((value) => value.description)}
-          humidity={searchCountries.main?.humidity}
-          pressure={searchCountries.main?.pressure}
-          wind={searchCountries.wind?.speed}
-          visibility={searchCountries?.visibility}
+          weatherContainer={searchCountries}
           onClick={addCard}
         />
+      ) : (
+        <div></div>
       )}
-      <Geolocation />
-      {/* {list && <WeatherList weather={list} />} */}
+
+      {typeof list.main != "undefined" ? (
+        <WeatherList weather={list} onClick={removeCard} />
+      ) : (
+        <div></div>
+      )}
     </>
   );
 }
+
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     searchCountries: state.searchCountries,
+//   };
+// };
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     createCard: (searchCountries) =>
+//       dispatch(action.createCard(searchCountries)),
+//     deleteCard: (index) => dispatch(action.deleteCard(index)),
+//   };
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(SearchCountry);

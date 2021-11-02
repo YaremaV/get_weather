@@ -10,6 +10,7 @@ export default function Geolocation() {
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
   const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,6 +26,9 @@ export default function Geolocation() {
         .then((result) => {
           setData(result);
           console.log(result);
+        })
+        .catch((error) => {
+          setError(error);
         });
     };
     fetchData();
@@ -32,7 +36,8 @@ export default function Geolocation() {
 
   return (
     <div>
-      {data && (
+      {error && <p>Whoops, something went wrong: {error.message}</p>}
+      {typeof data.main != "undefined" ? (
         <div className="main">
           <p className="header">{data.name}</p>
 
@@ -40,7 +45,6 @@ export default function Geolocation() {
             <p className="day">
               {moment().format("dddd")}, <span>{moment().format("LL")}</span>
             </p>
-            \{" "}
             <img
               alt={"Weather Condition and City"}
               src={`http://openweathermap.org/img/wn/${data?.weather?.map(
@@ -54,7 +58,7 @@ export default function Geolocation() {
 
           <div className="flex">
             <p className="temp">
-              Temprature: {Math.round(data.main?.temp)} &deg;C
+              Temperature: {Math.round(data.main?.temp)} &deg;C
             </p>
             <p className="temp">Humidity: {data.main?.humidity} %</p>
           </div>
@@ -70,6 +74,8 @@ export default function Geolocation() {
             </p>
           </div>
         </div>
+      ) : (
+        <div></div>
       )}
     </div>
   );

@@ -3,34 +3,30 @@ import { Link } from "react-router-dom";
 import { useRouteMatch, useHistory, useLocation } from "react-router";
 import "./weather.css";
 
-export default function WeatherContainer({
-  id,
-  temp,
-  city,
-  icon,
-  desc,
-  onClick,
-}) {
+export default function WeatherContainer({ weatherContainer, onClick }) {
   const { url } = useRouteMatch();
+  const icon = weatherContainer?.weather?.map((value) => value.icon);
+  const descr = weatherContainer?.weather?.map((value) => value.description);
   return (
     <main className="container">
       <ul className="row">
-        <li key={id} className="container-medium main">
-          <Link to={`/Information/${id}`}>
+        <li key={weatherContainer.id} className="container-medium main">
+          <Link to={`/Information/${weatherContainer.id}`}>
             <img
               alt={"Weather Condition and City"}
               src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
             />
 
-            <h1>{Math.round(temp - 273.15)} &#176;C</h1>
-            <h2>{city} </h2>
-            <p>{desc}</p>
+            <h1>{Math.round(weatherContainer?.main?.temp - 273.15)} &#176;C</h1>
+            <h2>{weatherContainer.name} </h2>
+            <p>{descr}</p>
           </Link>
           <div className="d-grid gap-2 d-md-block">
-            {/* <button className="btn btn-primary" type="button">
-              Add
-            </button> */}
-            <button onClick={onClick} className="btn btn-primary" type="button">
+            <button
+              onClick={() => onClick(weatherContainer)}
+              className="btn btn-primary"
+              type="button"
+            >
               Add
             </button>
           </div>
