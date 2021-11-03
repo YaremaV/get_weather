@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useRouteMatch, useHistory, useLocation } from "react-router";
 import "./weather.css";
 
 export default function WeatherContainer({ weatherContainer, onClick }) {
-  const { url } = useRouteMatch();
   const icon = weatherContainer?.weather?.map((value) => value.icon);
   const descr = weatherContainer?.weather?.map((value) => value.description);
   return (

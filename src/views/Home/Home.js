@@ -1,19 +1,17 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useRouteMatch, useHistory, useLocation } from "react-router";
 import * as moviesApi from "../../API/weather-api";
 import { v4 as uuidv4 } from "uuid";
-import { connect } from "react-redux";
-import * as action from "../../redux/action";
 import SearchBar from "../../component/Searchbar/Searchbar";
 import WeatherContainer from "../../component/WeatherContainer/WeatherContainer";
 import WeatherList from "../../component/WeatherList/WeatherList";
 
 export default function SearchCountry() {
-  const { url } = useRouteMatch();
   const [countries, setCountries] = useState("");
   const [searchCountries, setSearchCountries] = useState([]);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(
+    () => JSON.parse(window.localStorage.getItem("list")) ?? []
+  );
+  const [filter, setFilter] = useState("");
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -29,32 +27,31 @@ export default function SearchCountry() {
       });
   }, [countries]);
 
+  useEffect(() => {
+    window.localStorage.setItem("list", JSON.stringify(list));
+  }, [list]);
+
   const handleSubmit = (value) => {
     setCountries(value);
   };
 
-  const removeCard = (contactId) => {
+  const deleteCard = (contactId) => {
     setList((list) => list.filter((value) => value.id !== contactId));
   };
 
-  const addCard = (newCard) => {
-    console.log("click");
-    const normValue = newCard.name?.toLowerCase();
-    // newCard.id = uuidv4();
-
-    searchCountries.some(({ name }) => name?.toLowerCase() === normValue)
-      ? alert(`${newCard.name} is already in contacts`)
-      : setSearchCountries({ newCard, ...searchCountries });
+  const addCard = (newEl) => {
+    setList([newEl, ...list]);
+    console.log(list);
   };
 
-  // const onUpdate = () => {
-  //   moviesApi
-  //     .fetchSearch(countries)
-  //     .then((res) => setSearchCountries(res))
-  //     .catch((error) => {
-  //       setError(error);
-  //     });
-  // };
+  const onUpdate = () => {
+    moviesApi
+      .fetchSearch(countries)
+      .then((res) => setSearchCountries(res))
+      .catch((error) => {
+        setError(error);
+      });
+  };
 
   return (
     <>
@@ -69,8 +66,12 @@ export default function SearchCountry() {
         <div></div>
       )}
 
-      {typeof list.main != "undefined" ? (
-        <WeatherList weather={list} onClick={removeCard} />
+      {typeof searchCountries.main != "undefined" ? (
+        <WeatherList
+          weather={list}
+          onDeleteContacts={deleteCard}
+          upDate={onUpdate}
+        />
       ) : (
         <div></div>
       )}
