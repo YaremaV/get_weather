@@ -75,7 +75,7 @@ export default function Geolocation() {
           </div>
         </div>
       ) : (
-        <div></div>
+        <p>Whoops, something went wrong: {data.message}</p>
       )}
     </div>
   );
