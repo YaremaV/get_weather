@@ -4,7 +4,6 @@ import "./geolocation.css";
 
 const URL = "https://api.openweathermap.org/data/2.5";
 const KEY = "2d20223674e609e0aa7b3ad29d181f8b";
-const EACT_APP_ICON_URL = "https://openweathermap.org/img/w";
 
 export default function Geolocation() {
   const [lat, setLat] = useState([]);
@@ -37,6 +36,7 @@ export default function Geolocation() {
   return (
     <div>
       {error && <p>Whoops, something went wrong: {error.message}</p>}
+      <h4>Current weather in your location</h4>
       {typeof data.main != "undefined" ? (
         <div className="main">
           <p className="header">{data.name}</p>

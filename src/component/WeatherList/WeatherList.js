@@ -1,35 +1,49 @@
 import { useState, useEffect } from "react";
-import s from "./WeatherList.module.css";
+import { Link } from "react-router-dom";
+import "./WeatherList.css";
 
 export default function WeatherList({ weather, onDeleteContacts, upDate }) {
   return (
-    <ul className="contacts">
+    <ul className="gallery__wrapper">
       {weather.map((value) => (
-        <li key={value.id}>
-          <img
-            alt={"Weather Condition and City"}
-            src={`http://openweathermap.org/img/wn/${value?.weather?.map(
-              (value) => value.icon
-            )}@2x.png`}
-          />
-          <h1>{Math.round(value?.main?.temp - 273.15)} &#176;C</h1>
-          <h2>{value.name} </h2>
-          <p>{value?.weather?.map((value) => value.description)}</p>
+        <li
+          key={value.id}
+          className="gallery__list container-medium centered_cont"
+        >
+          <Link to={`/Information/${value.id}`}>
+            <div className="wraper">
+              <div>
+                <h2>{Math.round(value?.main?.temp - 273.15)} &#176;C</h2>
+                <h3>{value.name} </h3>
+              </div>
+              <div className="fav-info">
+                <img
+                  className="image"
+                  alt={"Weather Condition and City"}
+                  src={`http://openweathermap.org/img/wn/${value?.weather?.map(
+                    (value) => value.icon
+                  )}@2x.png`}
+                />
+                <p>{value?.weather?.map((value) => value.description)}</p>
+              </div>
+            </div>
+          </Link>
+
           <button
-            button
+            className="btn"
+            attribute={true}
             type="button"
-            className="TodoList__btn"
             onClick={() => onDeleteContacts(value.id)}
           >
             Delete
           </button>
           <button
-            button
+            className="update"
+            attribute={true}
             type="button"
-            className="TodoList__btn"
             onClick={upDate}
           >
-            upDate
+            UpDate
           </button>
         </li>
       ))}

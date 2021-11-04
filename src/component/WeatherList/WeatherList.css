@@ -1,6 +1,16 @@
-.row {
-  margin-top: 20px;
+.gallery__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
+
+.gallery__list {
+  margin: 20px;
+  transform: scale(1);
+  transition: transform 150ms linear;
+}
+
 .container-medium {
   width: 300px;
   padding: 10px;
@@ -14,6 +24,7 @@
     rgba(0, 125, 232, 1) 74%,
     rgba(148, 217, 233, 1) 100%
   );
+
   color: white;
   border-radius: 5px;
 }
@@ -29,15 +40,15 @@
 }
 .centered_cont {
   position: relative;
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; */
 }
 .btn {
   position: absolute;
   top: 0;
   right: 0;
-  margin: 0;
+  margin: 5px;
   border-radius: 10px;
   /* border: none; */
   background-color: transparent;
@@ -58,6 +69,16 @@
 }
 
 .svg__plus {
-  display: inline-block;
   fill: black;
+}
+
+.update {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 5px;
+  border-radius: 10px;
+  /* border: none; */
+  background-color: transparent;
+  cursor: pointer;
 }

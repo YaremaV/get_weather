@@ -1,7 +1,13 @@
 .main {
   width: 700px;
   border-radius: 20px;
-  background-color: #01579b;
+  background: rgb(40, 153, 208);
+  background: linear-gradient(
+    90deg,
+    rgba(40, 153, 208, 1) 33%,
+    rgba(0, 125, 232, 1) 74%,
+    rgba(148, 217, 233, 1) 100%
+  );
 }
 
 .top {
@@ -17,9 +23,18 @@
 
 .header {
   height: 40px;
-  background-color: #424242;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(71, 93, 176, 1) 43%,
+    rgba(90, 9, 121, 1) 93%,
+    rgba(0, 212, 255, 1) 100%
+  );
+
   color: whitesmoke;
   margin: 10px 0px 0px 10px;
+  padding: 10px;
   font-size: 25px;
   border-radius: 20px 20px 0 0;
   font-family: "Recursive", sans-serif;

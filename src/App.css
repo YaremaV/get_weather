@@ -3,6 +3,17 @@
 }
 
 body {
+  position: relative;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  min-height: 100vh;
+  background-image: url("./Images/background.jpg");
+
   margin: 0;
   background-color: #fff;
   color: #2a2a2a;

@@ -11,7 +11,7 @@ export default function SearchCountry() {
   const [list, setList] = useState(
     () => JSON.parse(window.localStorage.getItem("list")) ?? []
   );
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function SearchCountry() {
         setError(error);
       });
   };
-
+  const filtered = Array.from(new Set(list));
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
@@ -68,7 +68,7 @@ export default function SearchCountry() {
 
       {typeof searchCountries.main != "undefined" ? (
         <WeatherList
-          weather={list}
+          weather={filtered}
           onDeleteContacts={deleteCard}
           upDate={onUpdate}
         />

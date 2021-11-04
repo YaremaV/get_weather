@@ -15,10 +15,11 @@
   font-size: 24px;
   padding: 10px;
   text-decoration: none;
-  color: teal;
+
+  color: #4682b4;
 }
 
 .active {
-  color: tomato;
+  color: #483d8b;
 }
 /*# sourceMappingURL=navigation.module.css.map */

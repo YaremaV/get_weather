@@ -18,7 +18,7 @@ export function fetchDetails(id) {
   return fetchWithErrorHandling(`${BASE_URL}weather?id=${id}&appid=${KEY}`);
 }
 
-export function fetchFiveDays(id) {
+export function fetchFewDays(id) {
   return fetchWithErrorHandling(
     `${BASE_URL}forecast/daily?id=${id}&appid=${KEY}`
   );

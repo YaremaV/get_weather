@@ -1,0 +1,36 @@
+.cards__thumb {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(40, 208, 198);
+  background: linear-gradient(
+    90deg,
+    rgba(40, 208, 198, 1) 25%,
+    rgba(0, 125, 232, 1) 53%,
+    rgba(153, 148, 233, 1) 96%
+  );
+  color: white;
+  border-radius: 5px;
+
+  font-size: 20px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.line__flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.row__flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sup {
+  background-color: orange;
+  border-radius: 50%;
+  padding: 2px;
+}

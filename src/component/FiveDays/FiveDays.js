@@ -5,14 +5,14 @@ export default function FiveDays({ infoId }) {
   const [days, setDays] = useState([]);
   const data = new Date();
 
-  //   useEffect(() => {
-  //     moviesApi.fetchFiveDays(infoId).then((res) => setDays(res.list));
-  //   }, [infoId]);
+  // useEffect(() => {
+  //   moviesApi.fetchFewDays(infoId).then((res) => setDays(res.list));
+  // }, [infoId]);
   return (
     <>
       {console.log(days)}
       <ul>
-        {days.length &&
+        {days &&
           days?.map((day) => (
             <li>
               <h3>{data.toDateString(day.dt)}</h3>
