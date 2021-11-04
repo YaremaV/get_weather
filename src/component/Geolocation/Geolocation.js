@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import moment from "moment";
 import "./geolocation.css";
 
-const URL = "https://api.openweathermap.org/data/2.5";
+const URL = "HTTPS://api.openweathermap.org/data/2.5";
 const KEY = "2d20223674e609e0aa7b3ad29d181f8b";
 
 export default function Geolocation() {
@@ -47,7 +47,7 @@ export default function Geolocation() {
             </p>
             <img
               alt={"Weather Condition and City"}
-              src={`http://openweathermap.org/img/wn/${data?.weather?.map(
+              src={`https://openweathermap.org/img/wn/${data?.weather?.map(
                 (value) => value.icon
               )}@2x.png`}
             />
