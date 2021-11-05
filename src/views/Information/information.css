@@ -32,3 +32,20 @@
 .sup {
   padding: 10px;
 }
+
+.button {
+  font-size: 18px;
+  height: 30px;
+  margin-top: 20px;
+  background: rgb(40, 208, 198);
+  background: linear-gradient(
+    90deg,
+    rgba(40, 208, 198, 1) 25%,
+    rgba(0, 125, 232, 1) 53%,
+    rgba(153, 148, 233, 1) 96%
+  );
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}

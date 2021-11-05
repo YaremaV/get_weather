@@ -91,7 +91,9 @@ export default function Information() {
             state: { from: location },
           }}
         >
-          <button type="button">Load More</button>
+          <button className="button" type="button">
+            Load More
+          </button>
         </NavLink>
         <br />
       </div>
