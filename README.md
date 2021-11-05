@@ -9,3 +9,7 @@
 ##Get more Information 
 
 ![Info](https://user-images.githubusercontent.com/78107312/140507147-04b29de9-ffa8-4021-a756-0b8fc7359174.png)
+
+#Weather in your location
+
+![Geolocation](https://user-images.githubusercontent.com/78107312/140508860-60659019-6889-4859-9a7b-f67413289c55.png)
