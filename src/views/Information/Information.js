@@ -26,16 +26,18 @@ export default function Information() {
 
   return (
     <main>
+      {console.log(weather?.coord?.lon)}
+      {console.log(weather?.coord?.lat)}
       {weather && (
         <div className="cards__thumb ">
           <div className="line__flex">
             <div>
-              <h3>{data.toDateString(weather.dt)}</h3>
+              <h3>{data.toDateString(weather.dt)?.slice(0, 10)}</h3>
               <h2>
                 {weather.name}
                 <sup className="sup">{weather?.sys?.country}</sup>
               </h2>
-              <h3>{Math.round(weather?.main?.temp - 273.15)} &#176;C</h3>
+              <h1>{Math.round(weather?.main?.temp - 273.15)}&#176;C</h1>
             </div>
             <div className="row__flex">
               <p>{weather?.weather?.map((value) => value.main)}</p>
@@ -71,9 +73,9 @@ export default function Information() {
             </ul>
           </div>
           <div className="row__flex">
-            <p>Humidity: {weather.main?.humidity}%</p>
+            <p>Humidity: {weather.main?.humidity} %</p>
             <p>Pressure: {weather.main?.pressure} mb</p>
-            <p>Wind: {weather?.wind?.speed}km/h</p>
+            <p>Wind: {weather?.wind?.speed} km/h</p>
           </div>
           <div>
             <p className="sunrise-sunset">
@@ -97,7 +99,7 @@ export default function Information() {
             state: { from: location },
           }}
         >
-          <button type="button">Few Days</button>
+          <button type="button">Load More</button>
         </NavLink>
         <br />
       </div>
@@ -113,7 +115,9 @@ export default function Information() {
         }
       >
         <Route path={`${url}/FiveDays`}>
-          {weather && <FiveDays infoId={infoId} />}
+          {weather && (
+            <FiveDays lon={weather?.coord?.lon} lat={weather?.coord?.lat} />
+          )}
         </Route>
       </Suspense>
     </main>

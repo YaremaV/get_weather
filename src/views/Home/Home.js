@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import * as moviesApi from "../../API/weather-api";
-import { v4 as uuidv4 } from "uuid";
 import SearchBar from "../../component/Searchbar/Searchbar";
 import WeatherContainer from "../../component/WeatherContainer/WeatherContainer";
 import WeatherList from "../../component/WeatherList/WeatherList";
@@ -11,7 +10,6 @@ export default function SearchCountry() {
   const [list, setList] = useState(
     () => JSON.parse(window.localStorage.getItem("list")) ?? []
   );
-  const [filter, setFilter] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
