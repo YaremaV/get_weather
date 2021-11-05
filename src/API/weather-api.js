@@ -22,5 +22,4 @@ export function fetchFewDays(lon, lat) {
   return fetchWithErrorHandling(
     `${BASE_URL}onecall?lat=${lat}&lon=${lon}&exclude=hourly&appid=${KEY}`
   );
-  // https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid={API key}
 }

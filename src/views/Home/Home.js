@@ -1,8 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy } from "react";
 import * as moviesApi from "../../API/weather-api";
 import SearchBar from "../../component/Searchbar/Searchbar";
-import WeatherContainer from "../../component/WeatherContainer/WeatherContainer";
-import WeatherList from "../../component/WeatherList/WeatherList";
+
+const WeatherContainer = lazy(() =>
+  import("../../component/WeatherContainer/WeatherContainer")
+);
+const WeatherList = lazy(() =>
+  import("../../component/WeatherList/WeatherList")
+);
 
 export default function SearchCountry() {
   const [countries, setCountries] = useState("");

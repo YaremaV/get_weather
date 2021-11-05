@@ -1,17 +1,11 @@
-import { useState, useEffect } from "react";
-import {
-  useParams,
-  Route,
-  useRouteMatch,
-  useHistory,
-  useLocation,
-} from "react-router";
+import { useState, useEffect, lazy, Suspense } from "react";
+import { useParams, Route, useRouteMatch, useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
-import { lazy, Suspense } from "react";
 import * as moviesApi from "../../API/weather-api";
-import FiveDays from "../../component/FiveDays/FiveDays";
 import Loader from "react-loader-spinner";
 import "./information.css";
+
+const FiveDays = lazy(() => import("../../component/FiveDays/FiveDays"));
 
 export default function Information() {
   const [weather, setWeather] = useState([]);
@@ -26,8 +20,6 @@ export default function Information() {
 
   return (
     <main>
-      {console.log(weather?.coord?.lon)}
-      {console.log(weather?.coord?.lat)}
       {weather && (
         <div className="cards__thumb ">
           <div className="line__flex">

@@ -50,7 +50,8 @@
   right: 0;
   margin: 5px;
   border-radius: 10px;
-  /* border: none; */
+  border: 1px solid#fff;
+  color: #fff;
   background-color: transparent;
   cursor: pointer;
 }
@@ -78,7 +79,9 @@
   right: 0;
   margin: 5px;
   border-radius: 10px;
-  /* border: none; */
+  border: 1px solid#fff;
+  color: #fff;
+
   background-color: transparent;
   cursor: pointer;
 }

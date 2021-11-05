@@ -24,7 +24,6 @@ export default function Geolocation() {
         .then((res) => res.json())
         .then((result) => {
           setData(result);
-          console.log(result);
         })
         .catch((error) => {
           setError(error);

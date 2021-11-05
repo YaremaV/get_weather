@@ -30,7 +30,5 @@
   align-items: center;
 }
 .sup {
-  background-color: orange;
-  border-radius: 50%;
-  padding: 5px;
+  padding: 10px;
 }
