@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
-import "./geolocation.css";
+import s from "./geolocation.module.css";
 
 const URL = "HTTPS://api.openweathermap.org/data/2.5";
 const KEY = "2d20223674e609e0aa7b3ad29d181f8b";
@@ -35,13 +35,13 @@ export default function Geolocation() {
   return (
     <div>
       {error && <p>Whoops, something went wrong: {error.message}</p>}
-      <h4>Current weather in your location</h4>
+      <h4 className={s.title}>Current weather in your location</h4>
       {typeof data.main != "undefined" ? (
-        <div className="main">
-          <p className="header">{data.name}</p>
+        <div className={s.main}>
+          <p className={s.header}>{data.name}</p>
 
-          <div className="flex">
-            <p className="day">
+          <div className={s.flex}>
+            <p className={s.day}>
               {moment().format("dddd")}, <span>{moment().format("LL")}</span>
             </p>
             <img
@@ -50,24 +50,24 @@ export default function Geolocation() {
                 (value) => value.icon
               )}@2x.png`}
             />
-            <p className="description">
+            <p className={s.description}>
               {data.weather?.map((value) => value.main)}
             </p>
           </div>
 
-          <div className="flex">
-            <p className="temp">
+          <div className={s.flex}>
+            <p className={s.temp}>
               Temperature: {Math.round(data.main?.temp)} &deg;C
             </p>
-            <p className="temp">Humidity: {data.main?.humidity} %</p>
+            <p className={s.temp}>Humidity: {data.main?.humidity} %</p>
           </div>
 
-          <div className="flex">
-            <p className="sunrise-sunset">
+          <div className={s.flex}>
+            <p className={s.sunriseSunset}>
               Sunrise:{" "}
               {new Date(data.sys?.sunrise * 1000).toLocaleTimeString("en-IN")}
             </p>
-            <p className="sunrise-sunset">
+            <p className={s.sunriseSunset}>
               Sunset:{" "}
               {new Date(data.sys?.sunset * 1000).toLocaleTimeString("en-IN")}
             </p>

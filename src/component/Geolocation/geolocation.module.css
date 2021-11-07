@@ -1,5 +1,6 @@
 .main {
-  width: 700px;
+  width: 750px;
+  margin: 0 auto;
   border-radius: 20px;
   background: rgb(40, 153, 208);
   background: linear-gradient(
@@ -58,9 +59,10 @@
 .flex {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.sunrise-sunset {
+.sunriseSunset {
   padding: 15px;
   color: whitesmoke;
   font-family: "Recursive", sans-serif;
@@ -73,4 +75,11 @@
   font-family: "Recursive", sans-serif;
   font-size: 24px;
   font-weight: 600;
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 28px;
+  color: #4682b4;
 }
