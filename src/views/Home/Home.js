@@ -43,8 +43,10 @@ export default function SearchCountry() {
   };
 
   const addCard = (newEl) => {
-    setList([newEl, ...list]);
-    console.log(list);
+    list?.some((value) => value.name.includes(newEl.name))
+      ? alert(`${newEl.name} is already in list`)
+      : setList([newEl, ...list]);
+    // console.log(list?.map((value)=>value.name));
   };
 
   const onUpdate = () => {
@@ -55,7 +57,7 @@ export default function SearchCountry() {
         setError(error);
       });
   };
-  const filtered = Array.from(new Set(list));
+  // const filtered = Array.from(new Set(list));
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
@@ -71,7 +73,7 @@ export default function SearchCountry() {
 
       {typeof searchCountries.main != "undefined" ? (
         <WeatherList
-          weather={filtered}
+          weather={list}
           onDeleteContacts={deleteCard}
           upDate={onUpdate}
         />
