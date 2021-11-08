@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import listAction from "../../redux/list/list-action";
 import "./weather.css";
 
-export default function WeatherContainer({ weatherContainer, onClick }) {
+function WeatherContainer({ weatherContainer, onClick }) {
   const icon = weatherContainer?.weather?.map((value) => value.icon);
-  const descr = weatherContainer?.weather?.map((value) => value.description);
+  const description = weatherContainer?.weather?.map(
+    (value) => value.description
+  );
   return (
     <ul className="row ">
       <li key={weatherContainer.id} className="container-medium centered_cont">
@@ -22,7 +26,7 @@ export default function WeatherContainer({ weatherContainer, onClick }) {
                 alt={"Weather Condition and City"}
                 src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
               />
-              <p>{descr}</p>
+              <p>{description}</p>
             </div>
           </div>
         </Link>
@@ -38,3 +42,9 @@ export default function WeatherContainer({ weatherContainer, onClick }) {
     </ul>
   );
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  onClick: (newEL) => dispatch(listAction.addList(newEL)),
+});
+
+export default connect(null, mapDispatchToProps)(WeatherContainer);

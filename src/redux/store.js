@@ -15,17 +15,14 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import contactsReducer from "../redux/list/list-reducer";
-// import { composeWithDevTools } from 'redux-devtools-extension';
-// import { combineReducers } from 'redux';
 
 const persistConfig = {
-  key: "contacts",
+  key: "list",
   storage,
-  blacklist: ["filter"],
 };
 
 const rootReducer = combineReducers({
-  contacts: contactsReducer,
+  list: contactsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -42,10 +39,5 @@ const store = configureStore({
 
 const persistor = persistStore(store);
 
-// const rootReducer = combineReducers({
-//   contacts: contactsReducer,
-// });
-
-// const store = createStore(rootReducer, composeWithDevTools());
+// eslint-disable-next-line import/no-anonymous-default-export
 export default { store, persistor };
-// console.log(process.env.NODE_ENV);

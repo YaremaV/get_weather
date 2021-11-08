@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import listAction from "../../redux/list/list-action";
 import "./WeatherList.css";
 
-export default function WeatherList({ weather, onDeleteContacts, upDate }) {
+function WeatherList({ weather, onDelete, upDate }) {
   return (
     <ul className="gallery__wrapper">
+      {console.log(weather)}
+
       {weather.map((value) => (
         <li
           key={value.id}
@@ -32,7 +36,7 @@ export default function WeatherList({ weather, onDeleteContacts, upDate }) {
             className="btn"
             attribute={true}
             type="button"
-            onClick={() => onDeleteContacts(value.id)}
+            onClick={() => onDelete(value.id)}
           >
             Delete
           </button>
@@ -49,3 +53,12 @@ export default function WeatherList({ weather, onDeleteContacts, upDate }) {
     </ul>
   );
 }
+
+const mapStateToProps = (state) => ({
+  weather: state.list.items,
+});
+const mapDispatchToProps = (dispatch) => ({
+  onDelete: (id) => dispatch(listAction.deleteList(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeatherList);
