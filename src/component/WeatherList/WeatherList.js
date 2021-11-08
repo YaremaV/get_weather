@@ -6,8 +6,6 @@ import "./WeatherList.css";
 function WeatherList({ weather, onDelete, upDate }) {
   return (
     <ul className="gallery__wrapper">
-      {console.log(weather)}
-
       {weather.map((value) => (
         <li
           key={value.id}

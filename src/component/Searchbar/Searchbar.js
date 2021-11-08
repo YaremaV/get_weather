@@ -15,7 +15,6 @@ export default function Searchbar({ onSubmit }) {
     if (queryValue === null) {
       return;
     }
-
     setImage(queryValue);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

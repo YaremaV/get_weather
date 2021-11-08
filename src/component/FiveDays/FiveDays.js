@@ -10,7 +10,6 @@ export default function FiveDays({ lon, lat }) {
   }, [lat, lon]);
   return (
     <>
-      {console.log(days)}
       <ul className="flex_line">
         {days &&
           days?.map((day, idx) => (
