@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import s from "./Searchbar.module.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BsSearch } from "react-icons/bs";
 
 export default function Searchbar({ onSubmit }) {
   const location = useLocation();
@@ -50,7 +51,7 @@ export default function Searchbar({ onSubmit }) {
           onChange={handleImageChange}
         />
         <button type="submit" className={s.SearchFormButton}>
-          <span className={s.SearchFormButtonLabel}>Search</span>
+          <BsSearch size="35" />
         </button>
       </form>
     </header>

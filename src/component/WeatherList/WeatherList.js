@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import listAction from "../../redux/list/list-action";
+import { TiDeleteOutline } from "react-icons/ti";
+import { MdUpdate } from "react-icons/md";
 import "./WeatherList.css";
 
 function WeatherList({ weather, onDelete, upDate }) {
@@ -36,7 +38,7 @@ function WeatherList({ weather, onDelete, upDate }) {
             type="button"
             onClick={() => onDelete(value.id)}
           >
-            Delete
+            <TiDeleteOutline size="30" />
           </button>
           <button
             className="update"
@@ -44,7 +46,7 @@ function WeatherList({ weather, onDelete, upDate }) {
             type="button"
             onClick={upDate}
           >
-            UpDate
+            <MdUpdate size="30" />
           </button>
         </li>
       ))}

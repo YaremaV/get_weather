@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import listAction from "../../redux/list/list-action";
+import { IoIosAddCircleOutline } from "react-icons/io";
 import "./weather.css";
 
 function WeatherContainer({ weatherContainer, onClick }) {
@@ -36,7 +37,7 @@ function WeatherContainer({ weatherContainer, onClick }) {
           className="btn"
           type="button"
         >
-          Add
+          <IoIosAddCircleOutline size="30" />
         </button>
       </li>
     </ul>
